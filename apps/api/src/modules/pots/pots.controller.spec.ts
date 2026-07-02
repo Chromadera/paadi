@@ -272,6 +272,7 @@ function build() {
     provider as never,
     idempotency as never,
     payoutRepo as never,
+    null as never,
   );
   const controller = new PotsController(service);
   const payController = new PayController(service);
