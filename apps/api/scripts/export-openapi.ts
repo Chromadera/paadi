@@ -43,8 +43,11 @@ async function main(): Promise<void> {
   mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
   writeFileSync(OUTPUT_PATH, `${JSON.stringify(normalized, null, 2)}\n`, "utf8");
 
-  await app.close();
   process.stdout.write(`wrote ${OUTPUT_PATH}\n`);
+  process.exit(0);
 }
 
-void main();
+void main().catch((error) => {
+  process.stderr.write(`export-openapi failed: ${String(error)}\n`);
+  process.exit(1);
+});
