@@ -171,7 +171,7 @@ export default function SecurityPage() {
   return (
     <div className="w-full flex flex-col">
       {/* HEADER BAR - Conditional back action based on PIN flow state */}
-      <div className="flex items-center gap-2 mb-6">
+      {/* <div className="flex items-center gap-2 mb-6">
         <button
           type="button"
           onClick={() => pinStep === "menu" ? router.back() : setPinStep("menu")}
@@ -180,7 +180,7 @@ export default function SecurityPage() {
           <ChevronLeft className="h-5 w-5 stroke-[2.5]" />
         </button>
         <h1 className="text-2xl font-black text-ink tracking-tight">Security</h1>
-      </div>
+      </div> */}
 
       {/* --- RENDER LOGIC BASED ON PIN CHANGE STEP --- */}
 

@@ -144,7 +144,7 @@ export default function ProfileSettingsPage() {
     <img
       src={avatarUrl}
       alt="Your avatar"
-      className="absolute inset-0.5 w-[calc(100%+16px)] h-[calc(100%+16px)] object-contain drop-shadow-md z-10"
+      className="absolute inset-0.5 w-[calc(100%+1px)] h-[calc(100%+1px)] object-contain drop-shadow-md z-10"
     />
   ) : (
     <span className="absolute inset-0 flex items-center justify-center text-xl font-black text-ink z-10">
@@ -241,7 +241,7 @@ export default function ProfileSettingsPage() {
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-4 gap-2">
         {AVATARS.map((src) => (
           <button
             key={src}
@@ -250,16 +250,16 @@ export default function ProfileSettingsPage() {
               setAvatarUrl(src);
               setShowAvatarPicker(false);
             }}
-            className={`relative rounded-2xl overflow-hidden border-4 transition-all ${
+            className={`relative rounded-full overflow-hidden border-4 transition-all ${
                 avatarUrl === src
-                  ? "border-primary shadow-[2px_2px_0px_0px_#111827]"
+                  ? "border-success shadow-[2px_2px_0px_0px_#111827]"
                   : "border-transparent"
               }`}
           >
             <img src={src} alt="" className="w-full aspect-square object-cover z-30" />
             {avatarUrl === src && (
-              <div className="absolute inset-0 flex items-center justify-center bg-primary/20">
-                <CheckCircle2 className="h-4 w-4 text-ink" />
+              <div className="absolute inset-0 flex items-center justify-center ">
+                
               </div>
             )}
           </button>

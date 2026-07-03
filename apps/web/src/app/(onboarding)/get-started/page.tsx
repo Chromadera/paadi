@@ -51,7 +51,7 @@ export default function GetStartedPage() {
       src="/assets/get.jpg"  
       alt="People Sharing Pizza"
       width={200}          
-      height={50}         
+      height={100}         
       priority             
     />
             </div>
