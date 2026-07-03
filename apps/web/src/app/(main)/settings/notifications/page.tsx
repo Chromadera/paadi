@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useNotificationPrefs, useUpdateNotificationPrefs } from "@/features/settings/notifications-hooks"; // Adjust path as needed
+import {
+  useNotificationPrefs,
+  useUpdateNotificationPrefs,
+} from "@/features/settings/notifications-hooks";
 import { NotificationEvent, NotificationChannel, NotificationPreference } from "@/lib/api/notifications";
-import { ChevronLeft, Loader2, BellRing } from "lucide-react";
+import { Loader2, BellRing, Smartphone, MessageSquare, Phone } from "lucide-react";
 
-// Beautiful user-facing translation layer to convert screaming backend string types into clear, human copy
-const EVENT_LABELS: Record<NotificationEvent, { title: string; description: string }> = {
+const EVENT_LABELS: Record<
+  NotificationEvent,
+  { title: string; description: string }
+> = {
   NEW_CONTRIBUTION: {
     title: "New Contribution",
     description: "When someone drops cash into a pot you're in.",
@@ -22,11 +26,11 @@ const EVENT_LABELS: Record<NotificationEvent, { title: string; description: stri
   },
   NEW_LOGIN: {
     title: "Account Security",
-    description: "Get notified immediately if a new device logs into your profile.",
+    description: "Get notified if a new device logs into your profile.",
   },
   ORGANIZER_REMINDER: {
     title: "Organizer Reminders",
-    description: "Nudges from group organizers when payment deadlines approach.",
+    description: "Nudges from organizers when payment deadlines approach.",
   },
   FRIEND_REQUEST: {
     title: "Paadi Requests",
@@ -34,116 +38,170 @@ const EVENT_LABELS: Record<NotificationEvent, { title: string; description: stri
   },
 };
 
+const CHANNEL_META: Record<
+  NotificationChannel,
+  { label: string; icon: React.ComponentType<{ className?: string }> }
+> = {
+  PUSH:     { label: "Push",     icon: Smartphone    },
+  SMS:      { label: "SMS",      icon: Phone         },
+  WHATSAPP: { label: "WhatsApp", icon: MessageSquare },
+};
+
+// Toggle component — extracted for cleanliness
+function Toggle({
+  enabled,
+  pending,
+  onToggle,
+}: {
+  enabled: boolean;
+  pending: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      disabled={pending}
+      onClick={onToggle}
+      className={`relative w-11 h-6 rounded-full border-2 border-ink transition-all shrink-0 outline-none
+        ${enabled
+          ? "bg-primary shadow-[1px_1px_0px_0px_#111827]"
+          : "bg-ink/8 shadow-none"
+        }
+        ${pending ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
+      `}
+    >
+      <div
+        className={`absolute top-[2px] w-3.5 h-3.5 rounded-full bg-white border border-ink/20 transition-all duration-200
+          ${enabled ? "left-[20px]" : "left-[2px]"}
+        `}
+      />
+    </button>
+  );
+}
+
 export default function NotificationsPage() {
-  const router = useRouter();
   const { data, isPending, error } = useNotificationPrefs();
   const updateMutation = useUpdateNotificationPrefs();
   const [pendingKey, setPendingKey] = useState<string | null>(null);
 
-  // The critical mutation helper: safely swaps one row while preserving everything else
-  function handleToggleChannel(
+  function handleToggle(
     targetEvent: NotificationEvent,
     channel: NotificationChannel,
     currentStatus: boolean
   ) {
     if (!data?.preferences) return;
-    setPendingKey(`${targetEvent}:${channel}`);
-  
-    const atomicPayload = data.preferences.map((row) =>
+    const key = `${targetEvent}:${channel}`;
+    setPendingKey(key);
+
+    const updated = data.preferences.map((row) =>
       row.event === targetEvent && row.channel === channel
         ? { ...row, enabled: !currentStatus }
         : row
     );
-  
-    updateMutation.mutate(atomicPayload, { onSettled: () => setPendingKey(null) });
+
+    updateMutation.mutate(updated, {
+      onSettled: () => setPendingKey(null),
+    });
   }
 
+  // Group rows by event so each event = one card
+  const grouped = data?.preferences.reduce<Record<string, NotificationPreference[]>>(
+    (acc, pref) => {
+      if (!acc[pref.event]) acc[pref.event] = [];
+      acc[pref.event]!.push(pref as NotificationPreference);
+      return acc;
+    }, {} as Record<string, NotificationPreference[]>
+  )
+
   return (
-    <div className="w-full flex flex-col">
-      {/* HEADER BAR */}
-      <div className="flex items-center gap-2 mb-6">
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="p-1.5 rounded-lg hover:bg-ink/5 text-ink/60 transition-colors mr-1"
-        >
-          <ChevronLeft className="h-5 w-5 stroke-[2.5]" />
-        </button>
-        <h1 className="text-2xl font-black text-ink tracking-tight">Notifications</h1>
-      </div>
+    <div className="w-full flex flex-col gap-4">
 
-      {/* ERROR FRAME */}
+      {/* ERROR */}
       {error && !isPending && (
-        <div className="rounded-2xl border-2 border-danger/20 bg-danger/5 p-4 text-center mb-4">
+        <div className="rounded-2xl border-2 border-danger/20 bg-danger/5 p-4 text-center">
           <p className="text-xs font-bold text-danger">
-            ❌ Failed to fetch preferences. Swipe down or return later.
+            ❌ Failed to fetch preferences. Try again later.
           </p>
         </div>
       )}
 
-      {/* DYNAMIC LIST LAYER */}
-      <div className="flex flex-col gap-4">
-        {isPending ? (
-          <div className="flex flex-col items-center justify-center py-20 gap-3">
-            <Loader2 className="h-6 w-6 text-secondary animate-spin stroke-[2.5]" />
-            <p className="text-xs font-bold text-ink/40">Loading preferences...</p>
+      {/* LOADING */}
+      {isPending && (
+        <div className="flex flex-col items-center justify-center py-20 gap-3">
+          <Loader2 className="h-6 w-6 text-secondary animate-spin stroke-[2.5]" />
+          <p className="text-xs font-bold text-ink/40">Loading preferences...</p>
+        </div>
+      )}
+
+      {/* EVENT CARDS — one per event type, channels as rows inside */}
+      {!isPending && grouped && Object.entries(grouped).map(([event, prefs]) => {
+        const copy = EVENT_LABELS[event as NotificationEvent] ?? {
+          title: event.replace(/_/g, " "),
+          description: "System notification event.",
+        };
+
+        return (
+          <div
+            key={event}
+            className="rounded-2xl border border-ink/8 bg-surface p-4 shadow-sm flex flex-col gap-3"
+          >
+            {/* Event header */}
+            <div className="flex flex-col gap-0.5">
+              <h3 className="text-sm font-black text-ink leading-tight">
+                {copy.title}
+              </h3>
+              <p className="text-[11px] font-semibold text-ink/40 leading-normal">
+                {copy.description}
+              </p>
+            </div>
+
+            {/* Channel rows */}
+            <div className="flex flex-col gap-2 pt-1 border-t border-ink/6">
+              {prefs.map((pref) => {
+                const channelKey = `${event}:${pref.channel}`;
+                const meta = CHANNEL_META[pref.channel as NotificationChannel];
+                const Icon = meta?.icon;
+
+                return (
+                  <div
+                    key={channelKey}
+                    className="flex items-center justify-between gap-3"
+                  >
+                    <div className="flex items-center gap-2 text-ink/50">
+                      {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
+                      <span className="text-xs font-bold">
+                        {meta?.label ?? pref.channel}
+                      </span>
+                    </div>
+                    <Toggle
+                      enabled={pref.enabled}
+                      pending={pendingKey === channelKey}
+                      onToggle={() =>
+                        handleToggle(
+                          pref.event as NotificationEvent,
+                          pref.channel as NotificationChannel,
+                          pref.enabled
+                        )
+                      }
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        ) : (
-          data?.preferences.map((pref) => {
-            const copy = EVENT_LABELS[pref.event] || {
-              title: pref.event.replace("_", " "),
-              description: "System channel configuration events.",
-            };
+        );
+      })}
 
-            return (
-              <div
-                key={pref.event}
-                className="rounded-2xl border border-slate-100 bg-white p-4.5 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex items-center justify-between gap-4 transition-all"
-              >
-                {/* Text Block Content */}
-                <div className="flex flex-col gap-1 min-w-0">
-                  <h3 className="text-sm font-black text-ink/90 leading-tight">
-                    {copy.title}
-                  </h3>
-                  <p className="text-xs font-semibold text-ink/40 leading-normal pr-2">
-                    {copy.description}
-                  </p>
-                </div>
-
-                {/* Custom Soft Brutalist Toggle Switch Component */}
-                <button
-  type="button"
-  disabled={pendingKey === `${pref.event}:${pref.channel}`}
-  onClick={() => handleToggleChannel(pref.event, pref.channel, pref.enabled)}
-  className={`w-12 h-7 rounded-full border-2 border-ink transition-all relative shrink-0 outline-none ${
-    pref.enabled 
-      ? "bg-primary shadow-[1px_1px_0px_0px_#111827]" 
-      : "bg-slate-100 shadow-none"
-  }`}
->
-  <div
-    className={`absolute top-[3px] w-4 h-4 rounded-full border border-ink bg-white transition-all ${
-      pref.enabled 
-        ? "left-[22px] shadow-none" 
-        : "left-[4px]"
-    }`}
-  />
-</button>
-              </div>
-            );
-          })
-        )}
-      </div>
-
-      {/* CONTEXT INFORMATION CARD */}
+      {/* CONTEXT FOOTER */}
       {!isPending && !error && (
-        <div className="mt-8 rounded-2xl border-2 border-dashed border-ink/10 p-4 flex items-start gap-3 bg-slate-50/50">
-          <BellRing className="h-5 w-5 text-ink/40 shrink-0 mt-0.5" />
-          <p className="text-[11px] font-medium text-ink/50 leading-relaxed">
-            By default, Paadi routes high-priority alerts via PUSH to maintain secure wallet status verification. Channels like SMS and WhatsApp settings can be localized further down the stream.
+        <div className="mt-2 rounded-2xl border-2 border-dashed border-ink/10 p-4 flex items-start gap-3 bg-ink/2">
+          <BellRing className="h-4 w-4 text-ink/35 shrink-0 mt-0.5" />
+          <p className="text-[11px] font-medium text-ink/45 leading-relaxed">
+            High-priority alerts are routed via Push by default. SMS and WhatsApp can be configured per event above.
           </p>
         </div>
       )}
+
     </div>
   );
 }

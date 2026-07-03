@@ -2,14 +2,19 @@
 
 import { useRouter } from "next/navigation";
 import { CheckCircle } from "lucide-react";
+import { useOnboardingStore } from "@/features/onboarding/store";
 
 export default function OnboardingReadyPage() {
   const router = useRouter();
+  const resetOnboarding = useOnboardingStore((s) => s.reset);
 
   function handleFinish() {
+    // Clear onboarding store after session is set and we're ready
+    resetOnboarding();
     // Forward the fully configured profile user onto the main feed/dashboard
     router.push("/home");
   }
+
 
   return (
     <div className="flex h-dvh flex-col bg-linear-to-br from-bg via-bg to-secondary/10 px-6 pb-8 pt-5 justify-between max-w-sm mx-auto overflow-y-auto">

@@ -127,7 +127,7 @@ export default function PayoutAccountsPage() {
     <div className="w-full flex flex-col">
       
       {/* HEADER BAR */}
-      <div className="flex items-center justify-between mb-6">
+      {/* <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -148,7 +148,7 @@ export default function PayoutAccountsPage() {
           </h1>
         </div>
         
-      </div>
+      </div> */}
 
       {/* =========================================
           MODE 1: MAIN LIST VIEW 

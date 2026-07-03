@@ -1,26 +1,63 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Fingerprint, Loader2 } from "lucide-react";
+import { useRegisterDevice } from "@/features/onboarding/hooks";
+import { useOnboardingStore } from "@/features/onboarding/store";
 
 export default function BiometricPage() {
   const router = useRouter();
-  const [isAuthenticating, setIsAuthenticating] = useState(false);
+  const registerDevice = useRegisterDevice();
+  const setBiometricEnabled = useOnboardingStore((s) => s.setBiometricEnabled);
+  const isAuthenticating = registerDevice.isPending;
+
+  function getOrCreateDeviceId() {
+    if (typeof window === "undefined") return "web_ssr_placeholder";
+    let deviceId = localStorage.getItem("paadi:device_id");
+    if (!deviceId) {
+      deviceId = typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : Math.random().toString(36).substring(2) + Date.now().toString(36);
+      localStorage.setItem("paadi:device_id", deviceId);
+    }
+    return deviceId;
+  }
 
   function handleBiometricAuth() {
-    setIsAuthenticating(true);
-
-    // Simulate calling native device window prompt API
-    setTimeout(() => {
-      setIsAuthenticating(false);
-      router.push("/ready");
-    }, 1200);
+    const deviceId = getOrCreateDeviceId();
+    registerDevice.mutate(
+      { deviceId, biometricEnabled: true },
+      {
+        onSuccess: () => {
+          setBiometricEnabled(true);
+          router.push("/ready");
+        },
+        onError: () => {
+          // If native web credentials fail or server fails, still let the user proceed
+          setBiometricEnabled(true);
+          router.push("/ready");
+        }
+      }
+    );
   }
 
   function handleSkip() {
-    router.push("/ready");
+    const deviceId = getOrCreateDeviceId();
+    registerDevice.mutate(
+      { deviceId, biometricEnabled: false },
+      {
+        onSuccess: () => {
+          setBiometricEnabled(false);
+          router.push("/ready");
+        },
+        onError: () => {
+          setBiometricEnabled(false);
+          router.push("/ready");
+        }
+      }
+    );
   }
+
 
   return (
     <div className="flex h-dvh flex-col bg-linear-to-br from-bg via-bg to-secondary/10 px-6 pb-8 pt-5 justify-between max-w-sm mx-auto overflow-y-auto">

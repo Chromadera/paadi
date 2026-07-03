@@ -50,7 +50,7 @@ export function BottomNav() {
   };
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 px-5 pb-6 pointer-events-none max-w-sm mx-auto">
+    <div className="fixed inset-x-0 bottom-0 z-45 px-5 pb-6 pointer-events-none max-w-sm mx-auto">
 
       {/* Floating pill container */}
       <nav className="relative w-full h-16 flex items-center justify-around rounded-2xl border border-ink/10 bg-white/85 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.08)] px-2 pointer-events-auto">

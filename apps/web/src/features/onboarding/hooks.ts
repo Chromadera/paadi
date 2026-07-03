@@ -1,21 +1,19 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { fixtureSignupApi } from "@/lib/api/signup";
-import { ApiError } from "@/lib/api/error";
+import { publicClient, getAuthedClient } from "@/lib/api/client";
+import { PaadiApiError } from "@paadi/api-client";
 import { useSessionStore } from "@/lib/auth/session";
 import { useOnboardingStore } from "./store";
 
 /**
  * One mutation per signup step, all following the SAME shape:
- *   1. call signupApi.<method>
+ *   1. call publicClient.<method>
  *   2. on success, write the result into the store
  *   3. the PAGE (not this file) decides where to navigate next
  *
- * Swap point: change this one import line when @paadi/api-client ships.
- *   import { signupApi } from "@paadi/api-client";
- * Nothing else in this file changes — every hook below calls "signupApi.x",
- * never "fixtureSignupApi.x" directly, so the rename is contained to one line.
+ * All signup routes are @Public on the server — they use the onboardingToken
+ * passed in the request body as proof-of-progress, not a Bearer header.
+ * That's why we use publicClient (no Authorization header) throughout.
  */
-const signupApi = fixtureSignupApi;
 
 // ---- 1. phone entry -> request OTP ----
 
@@ -24,7 +22,7 @@ export function useSignupStart() {
   const setPhone = useOnboardingStore((s) => s.setPhone);
 
   return useMutation({
-    mutationFn: (phone: string) => signupApi.signupStart({ phone }),
+    mutationFn: (phone: string) => publicClient.signupStart({ phone }),
     onSuccess: (data, phone) => {
       setOnboardingToken(data.onboardingToken);
       setPhone(phone);
@@ -41,24 +39,25 @@ export function useVerifyPhone() {
   return useMutation({
     mutationFn: (code: string) => {
       if (!onboardingToken) {
-        // mirrors the real API's 400 shape so error handling in the UI
-        // is identical whether this trips or the server's check does
-        throw new ApiError({ statusCode: 400, message: "invalid onboarding token" });
+        throw new PaadiApiError(
+          { statusCode: 400, message: "invalid onboarding token" },
+          400
+        );
       }
-      return signupApi.signupVerifyPhone({ onboardingToken, code });
+      return publicClient.signupVerifyPhone({ onboardingToken, code });
     },
     onSuccess: () => setOtpVerified(true),
   });
 }
 
-// re-request a code on the same phone — same endpoint as the initial send,
-// the OTP screen's "resend" link just calls this again
+// Re-request a code on the same phone — same endpoint as the initial send.
+// The OTP screen's "resend" link just calls this again.
 export function useResendOtp() {
   const phone = useOnboardingStore((s) => s.phone);
   const setOnboardingToken = useOnboardingStore((s) => s.setOnboardingToken);
 
   return useMutation({
-    mutationFn: () => signupApi.signupStart({ phone }),
+    mutationFn: () => publicClient.signupStart({ phone }),
     onSuccess: (data) => setOnboardingToken(data.onboardingToken),
   });
 }
@@ -70,11 +69,20 @@ export function useSignupProfile() {
   const setName = useOnboardingStore((s) => s.setName);
 
   return useMutation({
-    mutationFn: ({ firstName, lastName }: { firstName: string; lastName: string }) => {
+    mutationFn: ({
+      firstName,
+      lastName,
+    }: {
+      firstName: string;
+      lastName: string;
+    }) => {
       if (!onboardingToken) {
-        throw new ApiError({ statusCode: 400, message: "invalid onboarding token" });
+        throw new PaadiApiError(
+          { statusCode: 400, message: "invalid onboarding token" },
+          400
+        );
       }
-      return signupApi.signupProfile({ onboardingToken, firstName, lastName });
+      return publicClient.signupProfile({ onboardingToken, firstName, lastName });
     },
     onSuccess: (_data, vars) => setName(vars.firstName, vars.lastName),
   });
@@ -82,12 +90,12 @@ export function useSignupProfile() {
 
 // ---- 4. username: availability check + claim ----
 
-// separate from the mutation below on purpose — this one fires on every
-// keystroke (debounced in the component), it's a read, not a step commit
+// Separate from the mutation below on purpose — this one fires on every
+// keystroke (debounced in the component), it's a read, not a step commit.
 export function useUsernameAvailable(handle: string) {
   return useQuery({
     queryKey: ["onboarding", "username-available", handle],
-    queryFn: () => signupApi.usernameAvailable(handle),
+    queryFn: () => publicClient.usernameAvailable(handle),
     enabled: handle.length >= 3, // don't fire for "a", "ad" etc
     staleTime: 0,
     retry: false,
@@ -101,9 +109,12 @@ export function useSignupUsername() {
   return useMutation({
     mutationFn: (username: string) => {
       if (!onboardingToken) {
-        throw new ApiError({ statusCode: 400, message: "invalid onboarding token" });
+        throw new PaadiApiError(
+          { statusCode: 400, message: "invalid onboarding token" },
+          400
+        );
       }
-      return signupApi.signupUsername({ onboardingToken, username });
+      return publicClient.signupUsername({ onboardingToken, username });
     },
     onSuccess: (_data, username) => setUsername(username),
   });
@@ -115,13 +126,15 @@ export function useSignupPassword() {
   const onboardingToken = useOnboardingStore((s) => s.onboardingToken);
 
   return useMutation({
-    // nothing written to the store on success — password is never kept
-    // client-side longer than this one request, see store.ts comment
+    // password is intentionally never stored client-side longer than this request
     mutationFn: (password: string) => {
       if (!onboardingToken) {
-        throw new ApiError({ statusCode: 400, message: "invalid onboarding token" });
+        throw new PaadiApiError(
+          { statusCode: 400, message: "invalid onboarding token" },
+          400
+        );
       }
-      return signupApi.signupPassword({ onboardingToken, password });
+      return publicClient.signupPassword({ onboardingToken, password });
     },
   });
 }
@@ -136,18 +149,38 @@ export function useSignupPin() {
   return useMutation({
     mutationFn: (pin: string) => {
       if (!onboardingToken) {
-        throw new ApiError({ statusCode: 400, message: "incomplete signup" });
+        throw new PaadiApiError(
+          { statusCode: 400, message: "incomplete signup" },
+          400
+        );
       }
-      return signupApi.signupPin({ onboardingToken, pin });
+      return publicClient.signupPin({ onboardingToken, pin });
     },
     onSuccess: (session, pin) => {
       setPin(pin);
-      // This is the real swap from before: the AuthSession returned here
-      // (accessToken/refreshToken/expiresIn) now actually persists via
-      // useSessionStore (lib/auth/session.ts), instead of being logged
-      // and discarded. Dashboard and any /me/* call can now read
-      // useSessionStore().accessToken to know the user is signed in.
+      // AuthSession (accessToken/refreshToken/expiresIn) persists via
+      // useSessionStore (lib/auth/session.ts). Dashboard and any /me/* call
+      // can now read useSessionStore().accessToken to know the user is signed in.
       setSession(session);
     },
+  });
+}
+
+// ---- 7. biometric device registration ----
+
+export function useRegisterDevice() {
+  return useMutation({
+    mutationFn: ({
+      deviceId,
+      biometricEnabled,
+    }: {
+      deviceId: string;
+      biometricEnabled: boolean;
+    }) =>
+      getAuthedClient().registerDevice({
+        deviceId,
+        platform: "WEB",
+        biometricEnabled,
+      }),
   });
 }

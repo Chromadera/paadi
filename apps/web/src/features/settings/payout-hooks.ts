@@ -1,23 +1,21 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fixturePayoutApi } from "@/lib/api/payouts";
+import { getAuthedClient } from "@/lib/api/client";
 
 /**
- * Sibling to profile-hooks.ts and notifications-hooks.ts — split by domain.
- * Backed by lib/api/payout.ts.
+ * Payout account hooks — all Bearer-authenticated.
  *
  * createPayoutAccount and deletePayoutAccount both take a `pin` and the
- * backend re-verifies it on that exact call — unlike security/page.tsx's
+ * backend re-verifies it on that exact call — unlike the security page's
  * flow, there's no separate "verify, then act" step here. Screens built
- * on useCreatePayoutAccount / useDeletePayoutAccount need to read
- * error.statusCode === 401 directly off THESE mutations to show "wrong
- * PIN," not borrow useVerifyPin from profile-hooks.ts.
+ * on useCreatePayoutAccount / useDeletePayoutAccount need to handle
+ * statusCode === 401 directly from THESE mutations to show "wrong PIN,"
+ * not borrow useVerifyPin from profile-hooks.ts.
  */
-const payoutApi = fixturePayoutApi;
 
 export function useBanks() {
   return useQuery({
     queryKey: ["settings", "banks"],
-    queryFn: () => payoutApi.listBanks(),
+    queryFn: () => getAuthedClient().getBanks(),
     staleTime: Infinity, // bank list essentially never changes mid-session
   });
 }
@@ -25,18 +23,17 @@ export function useBanks() {
 export function usePayoutAccounts() {
   return useQuery({
     queryKey: ["settings", "payout-accounts"],
-    queryFn: () => payoutApi.listPayoutAccounts(),
+    queryFn: () => getAuthedClient().getPayoutAccounts(),
   });
 }
 
 // Step 1 of "add account" — confirm the account name before committing.
 // A useMutation rather than useQuery on purpose: this fires once per
-// explicit "look this up" tap, not automatically as someone types a
-// 10-digit account number.
+// explicit "look this up" tap, not automatically as someone types.
 export function useLookupPayoutAccount() {
   return useMutation({
     mutationFn: (req: { bankCode: string; accountNumber: string }) =>
-      payoutApi.lookupPayoutAccount(req),
+      getAuthedClient().lookupPayoutAccount(req),
   });
 }
 
@@ -46,8 +43,11 @@ export function useCreatePayoutAccount() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (req: { bankCode: string; accountNumber: string; pin: string }) =>
-      payoutApi.createPayoutAccount(req),
+    mutationFn: (req: {
+      bankCode: string;
+      accountNumber: string;
+      pin: string;
+    }) => getAuthedClient().createPayoutAccount(req),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["settings", "payout-accounts"] });
     },
@@ -58,7 +58,7 @@ export function useSetPrimaryPayoutAccount() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (id: string) => payoutApi.setPrimaryPayoutAccount(id),
+    mutationFn: (id: string) => getAuthedClient().setPrimaryPayoutAccount(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["settings", "payout-accounts"] });
     },
@@ -70,7 +70,7 @@ export function useDeletePayoutAccount() {
 
   return useMutation({
     mutationFn: ({ id, pin }: { id: string; pin: string }) =>
-      payoutApi.deletePayoutAccount(id, { pin }),
+      getAuthedClient().deletePayoutAccount(id, { pin }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["settings", "payout-accounts"] });
     },
