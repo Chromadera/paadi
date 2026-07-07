@@ -19,6 +19,7 @@ import {
   type WithdrawInput
 } from "@paadi/contracts";
 import { CurrentUser } from "../../common/decorators/current-user.decorator";
+import { Scopes } from "../../common/decorators/scopes.decorator";
 import { ZodValidationPipe } from "../../common/pipes/zod-validation.pipe";
 import { ApiZod, ApiZodResponse } from "../../common/swagger/zod-api";
 import type { AccessClaims } from "../../infra/auth/token.service";
@@ -37,6 +38,7 @@ export class WalletController {
   ) {}
 
   @Get("me/wallet")
+  @Scopes("wallet:read")
   @ApiOperation({
     summary: "Get wallet balance",
     description: "Returns the caller's reconciled wallet balance in kobo, derived from the double-entry ledger."
@@ -47,6 +49,7 @@ export class WalletController {
   }
 
   @Get("me/wallet/transactions")
+  @Scopes("wallet:read")
   @ApiTags("statements")
   @ApiOperation({
     summary: "List wallet transactions",
@@ -61,6 +64,7 @@ export class WalletController {
   }
 
   @Get("me/statement")
+  @Scopes("wallet:read")
   @ApiTags("statements")
   @ApiOperation({
     summary: "Get customer statement",
@@ -75,6 +79,7 @@ export class WalletController {
   }
 
   @Post("me/wallet/pay")
+  @Scopes("wallet:pay")
   @ApiOperation({
     summary: "Pay a split from wallet",
     description: "Settles a pot split directly from the wallet balance. Requires an idempotency-key header and the caller's PIN."
@@ -100,6 +105,7 @@ export class WalletController {
   }
 
   @Post("me/wallet/withdraw")
+  @Scopes("wallet:withdraw")
   @ApiOperation({
     summary: "Withdraw from wallet",
     description: "Moves value out of the wallet to a bank account. Requires an idempotency-key header; subject to KYC tier limits."
@@ -117,6 +123,7 @@ export class WalletController {
   }
 
   @Get("me/wallet/withdrawals/:id")
+  @Scopes("wallet:read")
   @ApiOperation({
     summary: "Get withdrawal",
     description: "Returns the status and detail of a single withdrawal the caller initiated."

@@ -33,6 +33,7 @@ import { VirtualAccountsModule } from "./modules/virtual-accounts/virtual-accoun
 import { ReconciliationModule } from "./modules/reconciliation/reconciliation.module";
 import { WalletModule } from "./modules/wallet/wallet.module";
 import { ActivityModule } from "./modules/activity/activity.module";
+import { ApiKeysModule } from "./modules/api-keys/api-keys.module";
 import { DeveloperModule } from "./modules/developer/developer.module";
 
 @Module({
@@ -68,6 +69,7 @@ import { DeveloperModule } from "./modules/developer/developer.module";
     ReconciliationModule,
     WalletModule,
     ActivityModule,
+    ApiKeysModule,
     DeveloperModule
   ],
   providers: [
