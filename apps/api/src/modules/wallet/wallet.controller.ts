@@ -1,7 +1,7 @@
 import { BadRequestException, Body, Controller, Get, Headers, Param, Post, Query } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import {
-  paySplitFromWalletSchema,
+  payFromWalletBodySchema,
   potDetailSchema,
   statementQuerySchema,
   walletBalanceResponseSchema,
@@ -9,6 +9,7 @@ import {
   withdrawalParamsSchema,
   withdrawalViewSchema,
   withdrawSchema,
+  type PayFromWalletInput,
   type PotDetail,
   type StatementQuery,
   type WalletBalanceResponse,
@@ -17,7 +18,6 @@ import {
   type WithdrawalView,
   type WithdrawInput
 } from "@paadi/contracts";
-import { z } from "zod";
 import { CurrentUser } from "../../common/decorators/current-user.decorator";
 import { ZodValidationPipe } from "../../common/pipes/zod-validation.pipe";
 import { ApiZod, ApiZodResponse } from "../../common/swagger/zod-api";
@@ -25,14 +25,6 @@ import type { AccessClaims } from "../../infra/auth/token.service";
 import { WalletSpendService } from "./wallet-spend.service";
 import { WalletStatementService } from "./wallet-statement.service";
 import { WithdrawService } from "./withdrawal.service";
-
-const payFromWalletBodySchema = paySplitFromWalletSchema.extend({
-  potId: z.string().uuid(),
-  splitId: z.string().uuid(),
-  pin: z.string().regex(/^\d{4}$/)
-});
-
-type PayFromWalletBody = z.infer<typeof payFromWalletBodySchema>;
 
 @ApiTags("wallet")
 @ApiBearerAuth()
@@ -91,7 +83,7 @@ export class WalletController {
   async pay(
     @CurrentUser() claims: AccessClaims,
     @Headers("idempotency-key") idempotencyKey: string | undefined,
-    @Body(new ZodValidationPipe(payFromWalletBodySchema)) body: PayFromWalletBody
+    @Body(new ZodValidationPipe(payFromWalletBodySchema)) body: PayFromWalletInput
   ): Promise<PotDetail> {
     if (!idempotencyKey) {
       throw new BadRequestException("idempotency-key header required");
