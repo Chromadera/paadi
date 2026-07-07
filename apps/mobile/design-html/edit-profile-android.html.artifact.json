@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "edit-profile-android.html",
+  "entry": "edit-profile-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.968Z",
+  "updatedAt": "2026-07-05T08:56:57.968Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

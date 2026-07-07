@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Onboarding — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+  <style>
+    .ob-illustration {
+      width: 100%; height: 280px;
+      background: linear-gradient(135deg, #FFFBEB 0%, #FFF7ED 50%, #FEF3C7 100%);
+      border: 2px solid var(--fg);
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      position: relative; overflow: hidden;
+      box-shadow: 4px 4px 0 0 var(--fg);
+    }
+    .ob-illustration img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .feature-card {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 12px 16px;
+      width: 85%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1.5px solid var(--fg);
+    }
+    .feature-card .fc-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--accent);
+      border: 2px solid var(--fg);
+      box-shadow: 2px 2px 0 0 var(--fg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .feature-card .fc-title { font-size: 12px; font-weight: 800; text-align: left; }
+    .feature-card .fc-desc { font-size: 10px; color: var(--muted); text-align: left; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-ios">
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="onboarding-welcome-screen-ios" style="padding-bottom:60px;">
+
+    <!-- Slide 1: WhatsApp pain point -->
+    <section class="onboard-slide" data-od-id="onboard-slide-1" id="slide1">
+      <div class="ob-illustration" data-od-id="ob-illustration-whatsapp">
+        <img src="assets/onboardin.jpg" alt="Split money without chasing people" data-od-id="ob-illustration-img" />
+      </div>
+      <h2>Splitting money shouldn't mean chasing people on <span style="color:var(--pink);">WhatsApp.</span></h2>
+      <p>No more "who has paid" spreadsheets or chasing people in group chats. Paadi makes collective savings effortless.</p>
+      <div class="onboard-dots" data-od-id="onboard-dots-1">
+        <div class="onboard-dot active"></div>
+        <div class="onboard-dot"></div>
+        <div class="onboard-dot"></div>
+      </div>
+    </section>
+
+    <!-- Slide 2: How it works -->
+    <section class="onboard-slide" data-od-id="onboard-slide-2" id="slide2" style="display:none;">
+      <div class="ob-illustration" data-od-id="ob-illustration-features" style="background:var(--warning-bg);border:2px solid var(--warning-border);flex-direction:column;gap:16px;">
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <div><div class="fc-title">Create a Pot</div><div class="fc-desc">Set a target and invite friends</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+          <div><div class="fc-title">Everyone Contributes</div><div class="fc-desc">Send money directly into the pot</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div><div class="fc-title">Auto-Settlement</div><div class="fc-desc">Bills paid automatically when target hits</div></div>
+        </div>
+      </div>
+      <h2>Create a pot, split a bill, settle automatically</h2>
+      <p>Set up a pot in seconds. Invite your crew. Paadi handles the tracking, reminders, and settlement — so you don't have to.</p>
+      <div class="onboard-dots" data-od-id="onboard-dots-2">
+        <div class="onboard-dot"></div>
+        <div class="onboard-dot active"></div>
+        <div class="onboard-dot"></div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Security -->
+    <section class="onboard-slide" data-od-id="onboard-slide-3" id="slide3" style="display:none;">
+      <div class="ob-illustration" data-od-id="ob-illustration-security" style="background:var(--success-bg);border:2px solid var(--success-border);">
+        <div style="text-align:center;">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--accent);border:3px solid var(--fg);box-shadow:3px 3px 0 0 var(--fg);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:800;">Bank-Grade Security</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;max-width:24ch;">Your money is held securely. Only the pot creator or a majority vote can trigger settlement.</div>
+        </div>
+      </div>
+      <h2>Your money, your rules</h2>
+      <p>Every pot is protected by PIN verification. Funds are only released when the group agrees — no single person controls the payout.</p>
+      <div class="onboard-dots" data-od-id="onboard-dots-3">
+        <div class="onboard-dot"></div>
+        <div class="onboard-dot"></div>
+        <div class="onboard-dot active"></div>
+      </div>
+    </section>
+
+    <div style="padding: 0 8px; margin-top: 12px;">
+      <a href="onboarding-start-android.html" class="btn-primary" data-od-id="onboard-get-started-btn">Get Started</a>
+      <button class="btn-secondary mt-3" data-od-id="onboard-login-btn">I already have an account</button>
+    </div>
+
+    <div style="height:20px;background:var(--bg);display:flex;align-items:center;justify-content:center;"><div style="width:120px;height:4px;background:var(--fg);border-radius:2px;"></div></div>
+
+  </div>
+</div>
+
+<script>
+  var currentSlide = 0;
+  var slides = [document.getElementById('slide1'), document.getElementById('slide2'), document.getElementById('slide3')];
+  var dotSets = [
+    document.querySelector('[data-od-id="onboard-dots-1"]'),
+    document.querySelector('[data-od-id="onboard-dots-2"]'),
+    document.querySelector('[data-od-id="onboard-dots-3"]')
+  ];
+
+  function showSlide(n) {
+    slides.forEach(function(s, i) { s.style.display = i === n ? 'flex' : 'none'; });
+    dotSets.forEach(function(ds, i) {
+      ds.querySelectorAll('.onboard-dot').forEach(function(d, j) {
+        d.classList.toggle('active', j === i);
+      });
+    });
+    currentSlide = n;
+  }
+
+  // Tap to advance
+  slides.forEach(function(slide) {
+    slide.addEventListener('click', function() {
+      showSlide((currentSlide + 1) % 3);
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Create Pot Other — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-ios">
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="create-pot-other-screen-ios" style="padding-bottom:60px;">
+
+    <div class="ios-header" data-od-id="create-pot-header">
+      <a href="pots-android.html" style="font-size:20px;text-decoration:none;color:var(--fg);" data-od-id="back-link">←</a>
+      <h2 style="font-size:17px;font-weight:700;">Create Pot</h2>
+      <div style="width:20px;"></div>
+    </div>
+
+    <div style="padding:0 4px;" data-od-id="pot-type-tabs">
+      <div style="display:flex;gap:8px;margin-bottom:16px;" data-od-id="type-tabs">
+        <a href="create-pot-android.html" style="flex:1;padding:10px;text-align:center;border:2px solid var(--border);border-radius:12px;font-size:13px;font-weight:700;text-decoration:none;color:var(--muted);background:var(--surface);" data-od-id="tab-bill">Bill Payment</a>
+        <span style="flex:1;padding:10px;text-align:center;border:2px solid var(--fg);border-radius:12px;font-size:13px;font-weight:700;background:var(--surface);box-shadow:2px 2px 0 0 var(--fg);" data-od-id="tab-other">Other</span>
+      </div>
+    </div>
+
+    <div style="padding:0 4px;" data-od-id="pot-form">
+      <div class="card-label">Pot Name</div>
+      <input class="input mt-2" type="text" placeholder="e.g. Weekend Trip" data-od-id="pot-name-input">
+
+      <div class="card-label mt-4">Target Amount</div>
+      <input class="input mt-2" type="text" placeholder="₦0.00" data-od-id="target-input">
+
+      <div class="card-label mt-4">Description</div>
+      <textarea class="input mt-2" rows="3" placeholder="What is this pot for?" style="resize:none;" data-od-id="desc-input"></textarea>
+
+      <div class="card-label mt-4">Due Date</div>
+      <input class="input mt-2" type="date" data-od-id="due-date-input">
+
+      <div class="card-label mt-4">Split Type</div>
+      <div style="display:flex;gap:8px;margin-top:8px;" data-od-id="split-options">
+        <button style="flex:1;padding:12px;border:2px solid var(--fg);border-radius:12px;background:var(--surface);font-size:13px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="split-equal">Equal</button>
+        <button style="flex:1;padding:12px;border:2px solid var(--border);border-radius:12px;background:var(--surface);font-size:13px;font-weight:700;color:var(--muted);" data-od-id="split-custom">Custom</button>
+      </div>
+    </div>
+
+    <div style="padding:16px 4px 0;" data-od-id="pot-actions">
+      <button class="btn-primary" data-od-id="create-pot-btn">Create Pot</button>
+    </div>
+
+    <div style="height:20px;background:var(--bg);display:flex;align-items:center;justify-content:center;"><div style="width:120px;height:4px;background:var(--fg);border-radius:2px;"></div></div>
+
+  </div>
+</div>
+
+</body>
+</html>

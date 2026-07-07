@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Sign In — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-android">
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="relogin-screen-android" style="padding-bottom:60px;display:flex;flex-direction:column;">
+
+    <div style="text-align:center;padding:48px 8px 16px;" data-od-id="relogin-header">
+      <div class="brand-mark" style="width:56px;height:56px;border-radius:16px;font-size:24px;margin:0 auto 16px;">P</div>
+      <h1 style="font-size:26px;font-weight:900;letter-spacing:-0.3px;">Welcome back</h1>
+      <p style="font-size:14px;color:var(--muted-60);margin-top:6px;">Sign in to your account</p>
+    </div>
+
+    <div style="flex:1;padding:0 4px;" data-od-id="relogin-form">
+      <div class="card-label mt-4">Username or Email</div>
+      <input class="input mt-2" type="text" placeholder="seunade or seun@email.com" data-od-id="username-input">
+
+      <div class="card-label mt-4">Password</div>
+      <div style="position:relative;margin-top:8px;" data-od-id="password-input-wrap">
+        <input class="input" type="password" placeholder="Enter your password" style="padding-right:48px;" data-od-id="password-input" id="relogin-password">
+        <button style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;padding:4px;cursor:pointer;color:var(--muted);font-size:13px;font-weight:700;" data-od-id="show-password-btn" onclick="var p=document.getElementById('relogin-password');p.type=p.type==='password'?'text':'password';">Show</button>
+      </div>
+
+      <p style="text-align:right;margin-top:8px;" data-od-id="forgot-password">
+        <span style="font-size:13px;color:var(--fg);font-weight:700;cursor:pointer;">Forgot password?</span>
+      </p>
+
+      <a href="home-android.html" class="btn-primary mt-4" data-od-id="sign-in-btn">
+        Sign In
+        <span style="font-size:16px;">→</span>
+      </a>
+
+      <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:20px;" data-od-id="signup-prompt">
+        Don't have an account? <span style="color:var(--fg);font-weight:700;cursor:pointer;">Sign up</span>
+      </p>
+    </div>
+
+    <div style="height:20px;display:flex;align-items:center;justify-content:center;"><div style="width:120px;height:4px;background:var(--fg);border-radius:2px;"></div></div>
+
+  </div>
+</div>
+
+</body>
+</html>

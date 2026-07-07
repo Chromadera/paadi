@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "onboarding-phone-input-android.html",
+  "entry": "onboarding-phone-input-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.975Z",
+  "updatedAt": "2026-07-05T08:56:57.975Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

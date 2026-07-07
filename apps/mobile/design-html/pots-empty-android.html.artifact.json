@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "pots-empty-android.html",
+  "entry": "pots-empty-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.987Z",
+  "updatedAt": "2026-07-05T08:56:57.987Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

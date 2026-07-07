@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Biometrics — iOS</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+</head>
+<body>
+
+<div class="device-frame ios" data-od-id="device-frame-ios">
+  <div style="height:54px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:var(--bg);">
+    <div style="width:120px;height:32px;background:#111827;border-radius:18px;"></div>
+  </div>
+
+  <div class="device-screen" data-od-id="biometrics-screen-ios" style="padding-bottom:60px;">
+
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 4px;text-align:center;" data-od-id="biometrics-content">
+      <div style="width:80px;height:80px;border:2px solid var(--fg);border-radius:24px;display:flex;align-items:center;justify-content:center;background:var(--surface);box-shadow:3px 3px 0 0 var(--fg);margin-bottom:24px;" data-od-id="face-id-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-2 1.5-3 3-3s3 1 3 3"/><path d="M14 16c0-2 1.5-3 3-3s3 1 3 3"/><path d="M8 11V9a4 4 0 018 0v2"/><path d="M12 14v3"/><circle cx="12" cy="12" r="10"/></svg>
+      </div>
+      <h1 style="font-size:24px;font-weight:900;letter-spacing:-0.3px;">Enable Face ID</h1>
+      <p style="font-size:14px;color:var(--muted-60);margin-top:8px;max-width:260px;line-height:1.5;">Unlock Paadi and authorize payments quickly and securely with Face ID.</p>
+    </div>
+
+    <div style="padding:0 4px 16px;" data-od-id="biometrics-actions">
+      <button class="btn-primary" data-od-id="enable-face-id-btn">Enable Face ID</button>
+      <button style="width:100%;padding:14px;border:2px solid var(--fg);border-radius:14px;background:var(--surface);font-size:15px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);margin-top:12px;" data-od-id="skip-btn">Maybe Later</button>
+    </div>
+
+    <div class="home-indicator"></div>
+
+  </div>
+</div>
+
+</body>
+</html>

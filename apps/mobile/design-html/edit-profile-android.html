@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Edit Profile — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-ios">
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="edit-profile-screen-ios" style="padding-bottom:60px;">
+
+    <div class="ios-header" data-od-id="edit-profile-header">
+      <a href="settings-android.html" style="font-size:20px;text-decoration:none;color:var(--fg);" data-od-id="back-link">←</a>
+      <h2 style="font-size:17px;font-weight:700;">Edit Profile</h2>
+      <span style="font-size:15px;font-weight:700;color:var(--accent);cursor:pointer;" data-od-id="save-btn">Save</span>
+    </div>
+
+    <div style="padding:16px 4px;text-align:center;" data-od-id="avatar-section">
+      <div style="position:relative;display:inline-block;" data-od-id="avatar-wrap">
+        <img src="assets/avatars/avatar-1.png" alt="Profile" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--fg);" data-od-id="profile-avatar">
+        <div style="position:absolute;bottom:0;right:0;width:28px;height:28px;background:var(--fg);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--surface);" data-od-id="edit-avatar-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:0 4px;" data-od-id="profile-form">
+      <div class="card-label">Full Name</div>
+      <input class="input mt-2" type="text" value="Chidi Okonkwo" data-od-id="name-input">
+
+      <div class="card-label mt-4">Username</div>
+      <input class="input mt-2" type="text" value="@chidi_okonkwo" data-od-id="username-input">
+
+      <div class="card-label mt-4">Email</div>
+      <input class="input mt-2" type="email" value="chidi.okonkwo@gmail.com" data-od-id="email-input">
+
+      <div class="card-label mt-4">Phone</div>
+      <div class="phone-input-row mt-2" data-od-id="phone-row">
+        <div class="country-code">
+          <span style="font-size:18px;">🇳🇬</span>
+          +234
+        </div>
+        <input class="input" type="tel" value="801 234 5678" data-od-id="phone-input">
+      </div>
+    </div>
+
+    <div style="height:20px;background:var(--bg);display:flex;align-items:center;justify-content:center;"><div style="width:120px;height:4px;background:var(--fg);border-radius:2px;"></div></div>
+
+  </div>
+</div>
+
+</body>
+</html>

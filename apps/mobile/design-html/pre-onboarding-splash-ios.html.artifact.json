@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "pre-onboarding-splash-ios.html",
+  "entry": "pre-onboarding-splash-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T15:22:34.869Z",
+  "updatedAt": "2026-07-05T15:22:34.869Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

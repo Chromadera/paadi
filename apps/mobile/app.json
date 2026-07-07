@@ -7,10 +7,20 @@
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-secure-store"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chromadera.paadi"
     },
-    "android": {}
+    "android": {
+      "package": "com.chromadera.paadi"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8e3b13ee-b276-4c17-b8e5-471c97e0c523"
+      }
+    }
   }
 }

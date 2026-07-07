@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "pot-details-input-android.html",
+  "entry": "pot-details-input-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.984Z",
+  "updatedAt": "2026-07-05T08:56:57.984Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

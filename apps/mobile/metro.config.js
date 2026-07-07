@@ -11,4 +11,19 @@ config.resolver.nodeModulesPaths = [
   path.resolve(monorepoRoot, "node_modules")
 ];
 
+// Resolve @/ prefix → apps/mobile/
+const resolveRequest = config.resolver.resolveRequest;
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (moduleName.startsWith("@/")) {
+    return context.resolveRequest(
+      context,
+      path.resolve(projectRoot, moduleName.slice(2)),
+      platform
+    );
+  }
+  return resolveRequest
+    ? resolveRequest(context, moduleName, platform)
+    : context.resolveRequest(context, moduleName, platform);
+};
+
 module.exports = config;

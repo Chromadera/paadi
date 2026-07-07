@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi — Mobile Design Reference</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f1f5f9;
+      color: #111827;
+      padding: 32px;
+      min-height: 100vh;
+    }
+    .launcher {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .launcher h1 {
+      font-size: 28px; font-weight: 900; letter-spacing: -0.3px;
+      margin-bottom: 4px;
+    }
+    .launcher .sub {
+      font-size: 14px; color: rgba(17,24,39,0.5); margin-bottom: 32px;
+    }
+    .platform-section {
+      margin-bottom: 48px;
+    }
+    .platform-section h2 {
+      font-size: 16px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; color: rgba(17,24,39,0.4);
+      border-bottom: 2px solid rgba(17,24,39,0.06);
+      padding-bottom: 10px; margin-bottom: 16px;
+    }
+    .flow-group {
+      margin-bottom: 24px;
+    }
+    .flow-group h3 {
+      font-size: 13px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.5px; color: rgba(17,24,39,0.35);
+      margin-bottom: 10px;
+    }
+    .screen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .screen-card {
+      background: #fff;
+      border: 1px solid rgba(17,24,39,0.06);
+      border-radius: 14px;
+      padding: 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.15s ease;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .screen-card:hover {
+      border-color: #FFD200;
+      box-shadow: 0 4px 16px rgba(255,210,0,0.15);
+      transform: translateY(-1px);
+    }
+    .screen-card .sc-num {
+      font-size: 10px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; color: rgba(17,24,39,0.3);
+    }
+    .screen-card .sc-name {
+      font-size: 15px; font-weight: 800;
+    }
+    .screen-card .sc-desc {
+      font-size: 12px; color: rgba(17,24,39,0.5);
+    }
+    .brand-strip {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 32px;
+    }
+    .brand-strip .mark {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: #FFD200;
+      border: 2px solid #111827;
+      box-shadow: 2.5px 2.5px 0 0 #111827;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px;
+    }
+    .brand-strip .name {
+      font-size: 22px; font-weight: 900; letter-spacing: -0.3px;
+    }
+    .stats-bar {
+      display: flex; gap: 24px; margin-bottom: 32px;
+      font-size: 13px; color: rgba(17,24,39,0.5);
+    }
+    .stats-bar span {
+      font-weight: 700; color: #111827;
+    }
+  </style>
+</head>
+<body>
+<div class="launcher">
+
+  <div class="brand-strip">
+    <div class="mark">P</div>
+    <span class="name">Paadi — Mobile Design Reference</span>
+  </div>
+
+  <p class="sub">Port of the web dapp to mobile. Each screen opens in a Pixel or iPhone device frame. Use these as the source of truth for your React Expo implementation.</p>
+
+  <div class="stats-bar">
+    <div><span>35</span> screens per platform</div>
+    <div><span>70</span> total files</div>
+    <div><span>8</span> flows covered</div>
+  </div>
+
+  <div class="platform-section">
+    <h2>Android (Pixel)</h2>
+
+    <div class="flow-group">
+      <h3>Main App</h3>
+      <div class="screen-grid">
+        <a href="home-android.html" class="screen-card"><span class="sc-num">01</span><span class="sc-name">Home</span><span class="sc-desc">Balance, quick actions, active pots</span></a>
+        <a href="pots-android.html" class="screen-card"><span class="sc-num">02</span><span class="sc-name">Pots List</span><span class="sc-desc">Filterable collection with avatars</span></a>
+        <a href="pots-empty-android.html" class="screen-card"><span class="sc-num">03</span><span class="sc-name">Pots Empty</span><span class="sc-desc">Empty state with CTA</span></a>
+        <a href="pot-details-android.html" class="screen-card"><span class="sc-num">04</span><span class="sc-name">Pot Details</span><span class="sc-desc">Members, status, payout</span></a>
+        <a href="pot-details-input-android.html" class="screen-card"><span class="sc-num">05</span><span class="sc-name">Pot Details (Custom)</span><span class="sc-desc">Custom split with inputs</span></a>
+        <a href="pot-details-ending-android.html" class="screen-card"><span class="sc-num">06</span><span class="sc-name">Pot Ended</span><span class="sc-desc">Completed pot summary</span></a>
+        <a href="create-pot-android.html" class="screen-card"><span class="sc-num">07</span><span class="sc-name">Create Pot — Bill</span><span class="sc-desc">Bill payment, meter verify</span></a>
+        <a href="pot-creation-other-android.html" class="screen-card"><span class="sc-num">08</span><span class="sc-name">Create Pot — Other</span><span class="sc-desc">Custom pot creation</span></a>
+        <a href="pot-addbank-payout-android.html" class="screen-card"><span class="sc-num">09</span><span class="sc-name">Payout</span><span class="sc-desc">Withdraw to bank</span></a>
+        <a href="pot-bank-picker-android.html" class="screen-card"><span class="sc-num">10</span><span class="sc-name">Bank Picker</span><span class="sc-desc">Select saved or new bank</span></a>
+        <a href="activity-android.html" class="screen-card"><span class="sc-num">11</span><span class="sc-name">Activity</span><span class="sc-desc">Transaction timeline</span></a>
+        <a href="activity-empty-android.html" class="screen-card"><span class="sc-num">12</span><span class="sc-name">Activity Empty</span><span class="sc-desc">No transactions yet</span></a>
+        <a href="profile-android.html" class="screen-card"><span class="sc-num">13</span><span class="sc-name">Profile</span><span class="sc-desc">Avatar, KYC, settings link</span></a>
+        <a href="profile-extended-android.html" class="screen-card"><span class="sc-num">14</span><span class="sc-name">Profile Extended</span><span class="sc-desc">Stats, menu, referral</span></a>
+      </div>
+    </div>
+
+    <div class="flow-group">
+      <h3>Pre-Onboarding</h3>
+      <div class="screen-grid">
+        <a href="pre-onboarding-splash-android.html" class="screen-card"><span class="sc-num">15</span><span class="sc-name">Splash</span><span class="sc-desc">Brand + phone mockup</span></a>
+        <a href="pre-onboarding-pots-android.html" class="screen-card"><span class="sc-num">16</span><span class="sc-name">Group Pots</span><span class="sc-desc">Value prop illustration</span></a>
+        <a href="pre-onboarding-split-android.html" class="screen-card"><span class="sc-num">17</span><span class="sc-name">Split Bills</span><span class="sc-desc">Value prop illustration</span></a>
+      </div>
+    </div>
+
+    <div class="flow-group">
+      <h3>Onboarding</h3>
+      <div class="screen-grid">
+        <a href="onboarding-welcome-android.html" class="screen-card"><span class="sc-num">18</span><span class="sc-name">Welcome Carousel</span><span class="sc-desc">3-slide feature intro</span></a>
+        <a href="onboarding-start-android.html" class="screen-card"><span class="sc-num">19</span><span class="sc-name">Get Started</span><span class="sc-desc">Landing + action buttons</span></a>
+        <a href="onboarding-phone-android.html" class="screen-card"><span class="sc-num">20</span><span class="sc-name">Phone Entry</span><span class="sc-desc">Phone + social login</span></a>
+        <a href="onboarding-phone-input-android.html" class="screen-card"><span class="sc-num">18</span><span class="sc-name">Phone (Filled)</span><span class="sc-desc">Phone number entered</span></a>
+        <a href="onboarding-otp-android.html" class="screen-card"><span class="sc-num">19</span><span class="sc-name">OTP Entry</span><span class="sc-desc">6-digit code input</span></a>
+        <a href="onboarding-otp-input-android.html" class="screen-card"><span class="sc-num">20</span><span class="sc-name">OTP (Filled)</span><span class="sc-desc">Partial code entered</span></a>
+        <a href="onboarding-pin-android.html" class="screen-card"><span class="sc-num">21</span><span class="sc-name">Create PIN</span><span class="sc-desc">4-digit PIN + numpad</span></a>
+        <a href="onboarding-pin-input-android.html" class="screen-card"><span class="sc-num">22</span><span class="sc-name">PIN (Filled)</span><span class="sc-desc">2 digits entered</span></a>
+        <a href="onboarding-confirm-pin-android.html" class="screen-card"><span class="sc-num">23</span><span class="sc-name">Confirm PIN</span><span class="sc-desc">Re-enter PIN</span></a>
+        <a href="onboarding-biometrics-android.html" class="screen-card"><span class="sc-num">24</span><span class="sc-name">Biometrics</span><span class="sc-desc">Face ID enable</span></a>
+      </div>
+    </div>
+
+    <div class="flow-group">
+      <h3>Auth, Security & Settings</h3>
+      <div class="screen-grid">
+        <a href="relogin-android.html" class="screen-card"><span class="sc-num">25</span><span class="sc-name">Re-login</span><span class="sc-desc">PIN entry for return users</span></a>
+        <a href="verification-android.html" class="screen-card"><span class="sc-num">26</span><span class="sc-name">Verification</span><span class="sc-desc">BVN / NIN / ID steps</span></a>
+        <a href="verification-alt-android.html" class="screen-card"><span class="sc-num">27</span><span class="sc-name">Verification (Alt)</span><span class="sc-desc">Method selection</span></a>
+        <a href="verification-error-android.html" class="screen-card"><span class="sc-num">28</span><span class="sc-name">Verification Error</span><span class="sc-desc">Failed with error code</span></a>
+        <a href="security-android.html" class="screen-card"><span class="sc-num">29</span><span class="sc-name">Security</span><span class="sc-desc">PIN, Face ID, auto-lock</span></a>
+        <a href="change-pin-android.html" class="screen-card"><span class="sc-num">30</span><span class="sc-name">Change PIN</span><span class="sc-desc">Current + new PIN</span></a>
+        <a href="change-pin-input-android.html" class="screen-card"><span class="sc-num">31</span><span class="sc-name">Change PIN (Input)</span><span class="sc-desc">Current PIN verified</span></a>
+        <a href="confirm-new-pin-android.html" class="screen-card"><span class="sc-num">32</span><span class="sc-name">Confirm New PIN</span><span class="sc-desc">Re-enter new PIN</span></a>
+        <a href="settings-android.html" class="screen-card"><span class="sc-num">33</span><span class="sc-name">Settings</span><span class="sc-desc">Account, prefs, support</span></a>
+        <a href="edit-profile-android.html" class="screen-card"><span class="sc-num">34</span><span class="sc-name">Edit Profile</span><span class="sc-desc">Name, username, phone</span></a>
+        <a href="notifications-android.html" class="screen-card"><span class="sc-num">35</span><span class="sc-name">Notifications</span><span class="sc-desc">Push + email toggles</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="platform-section">
+    <h2>iOS (iPhone)</h2>
+
+    <div class="flow-group">
+      <h3>Main App</h3>
+      <div class="screen-grid">
+        <a href="home-ios.html" class="screen-card"><span class="sc-num">01</span><span class="sc-name">Home</span><span class="sc-desc">Balance, quick actions, active pots</span></a>
+        <a href="pots-ios.html" class="screen-card"><span class="sc-num">02</span><span class="sc-name">Pots List</span><span class="sc-desc">Filterable collection with avatars</span></a>
+        <a href="pots-empty-ios.html" class="screen-card"><span class="sc-num">03</span><span class="sc-name">Pots Empty</span><span class="sc-desc">Empty state with CTA</span></a>
+        <a href="pot-details-ios.html" class="screen-card"><span class="sc-num">04</span><span class="sc-name">Pot Details</span><span class="sc-desc">Members, status, payout</span></a>
+        <a href="pot-details-input-ios.html" class="screen-card"><span class="sc-num">05</span><span class="sc-name">Pot Details (Custom)</span><span class="sc-desc">Custom split with inputs</span></a>
+        <a href="pot-details-ending-ios.html" class="screen-card"><span class="sc-num">06</span><span class="sc-name">Pot Ended</span><span class="sc-desc">Completed pot summary</span></a>
+        <a href="create-pot-ios.html" class="screen-card"><span class="sc-num">07</span><span class="sc-name">Create Pot — Bill</span><span class="sc-desc">Bill payment, meter verify</span></a>
+        <a href="pot-creation-other-ios.html" class="screen-card"><span class="sc-num">08</span><span class="sc-name">Create Pot — Other</span><span class="sc-desc">Custom pot creation</span></a>
+        <a href="pot-addbank-payout-ios.html" class="screen-card"><span class="sc-num">09</span><span class="sc-name">Payout</span><span class="sc-desc">Withdraw to bank</span></a>
+        <a href="pot-bank-picker-ios.html" class="screen-card"><span class="sc-num">10</span><span class="sc-name">Bank Picker</span><span class="sc-desc">Select saved or new bank</span></a>
+        <a href="activity-ios.html" class="screen-card"><span class="sc-num">11</span><span class="sc-name">Activity</span><span class="sc-desc">Transaction timeline</span></a>
+        <a href="activity-empty-ios.html" class="screen-card"><span class="sc-num">12</span><span class="sc-name">Activity Empty</span><span class="sc-desc">No transactions yet</span></a>
+        <a href="profile-ios.html" class="screen-card"><span class="sc-num">13</span><span class="sc-name">Profile</span><span class="sc-desc">Avatar, KYC, settings link</span></a>
+        <a href="profile-extended-ios.html" class="screen-card"><span class="sc-num">14</span><span class="sc-name">Profile Extended</span><span class="sc-desc">Stats, menu, referral</span></a>
+      </div>
+    </div>
+
+    <div class="flow-group">
+      <h3>Pre-Onboarding</h3>
+      <div class="screen-grid">
+        <a href="pre-onboarding-splash-ios.html" class="screen-card"><span class="sc-num">15</span><span class="sc-name">Splash</span><span class="sc-desc">Brand + phone mockup</span></a>
+        <a href="pre-onboarding-pots-ios.html" class="screen-card"><span class="sc-num">16</span><span class="sc-name">Group Pots</span><span class="sc-desc">Value prop illustration</span></a>
+        <a href="pre-onboarding-split-ios.html" class="screen-card"><span class="sc-num">17</span><span class="sc-name">Split Bills</span><span class="sc-desc">Value prop illustration</span></a>
+      </div>
+    </div>
+
+    <div class="flow-group">
+      <h3>Onboarding</h3>
+      <div class="screen-grid">
+        <a href="onboarding-welcome-ios.html" class="screen-card"><span class="sc-num">18</span><span class="sc-name">Welcome Carousel</span><span class="sc-desc">3-slide feature intro</span></a>
+        <a href="onboarding-start-ios.html" class="screen-card"><span class="sc-num">19</span><span class="sc-name">Get Started</span><span class="sc-desc">Landing + action buttons</span></a>
+        <a href="onboarding-phone-ios.html" class="screen-card"><span class="sc-num">20</span><span class="sc-name">Phone Entry</span><span class="sc-desc">Phone + social login</span></a>
+        <a href="onboarding-phone-input-ios.html" class="screen-card"><span class="sc-num">18</span><span class="sc-name">Phone (Filled)</span><span class="sc-desc">Phone number entered</span></a>
+        <a href="onboarding-otp-ios.html" class="screen-card"><span class="sc-num">19</span><span class="sc-name">OTP Entry</span><span class="sc-desc">6-digit code input</span></a>
+        <a href="onboarding-otp-input-ios.html" class="screen-card"><span class="sc-num">20</span><span class="sc-name">OTP (Filled)</span><span class="sc-desc">Partial code entered</span></a>
+        <a href="onboarding-pin-ios.html" class="screen-card"><span class="sc-num">21</span><span class="sc-name">Create PIN</span><span class="sc-desc">4-digit PIN + numpad</span></a>
+        <a href="onboarding-pin-input-ios.html" class="screen-card"><span class="sc-num">22</span><span class="sc-name">PIN (Filled)</span><span class="sc-desc">2 digits entered</span></a>
+        <a href="onboarding-confirm-pin-ios.html" class="screen-card"><span class="sc-num">23</span><span class="sc-name">Confirm PIN</span><span class="sc-desc">Re-enter PIN</span></a>
+        <a href="onboarding-biometrics-ios.html" class="screen-card"><span class="sc-num">24</span><span class="sc-name">Biometrics</span><span class="sc-desc">Face ID enable</span></a>
+      </div>
+    </div>
+
+    <div class="flow-group">
+      <h3>Auth, Security & Settings</h3>
+      <div class="screen-grid">
+        <a href="relogin-ios.html" class="screen-card"><span class="sc-num">25</span><span class="sc-name">Re-login</span><span class="sc-desc">PIN entry for return users</span></a>
+        <a href="verification-ios.html" class="screen-card"><span class="sc-num">26</span><span class="sc-name">Verification</span><span class="sc-desc">BVN / NIN / ID steps</span></a>
+        <a href="verification-alt-ios.html" class="screen-card"><span class="sc-num">27</span><span class="sc-name">Verification (Alt)</span><span class="sc-desc">Method selection</span></a>
+        <a href="verification-error-ios.html" class="screen-card"><span class="sc-num">28</span><span class="sc-name">Verification Error</span><span class="sc-desc">Failed with error code</span></a>
+        <a href="security-ios.html" class="screen-card"><span class="sc-num">29</span><span class="sc-name">Security</span><span class="sc-desc">PIN, Face ID, auto-lock</span></a>
+        <a href="change-pin-ios.html" class="screen-card"><span class="sc-num">30</span><span class="sc-name">Change PIN</span><span class="sc-desc">Current + new PIN</span></a>
+        <a href="change-pin-input-ios.html" class="screen-card"><span class="sc-num">31</span><span class="sc-name">Change PIN (Input)</span><span class="sc-desc">Current PIN verified</span></a>
+        <a href="confirm-new-pin-ios.html" class="screen-card"><span class="sc-num">32</span><span class="sc-name">Confirm New PIN</span><span class="sc-desc">Re-enter new PIN</span></a>
+        <a href="settings-ios.html" class="screen-card"><span class="sc-num">33</span><span class="sc-name">Settings</span><span class="sc-desc">Account, prefs, support</span></a>
+        <a href="edit-profile-ios.html" class="screen-card"><span class="sc-num">34</span><span class="sc-name">Edit Profile</span><span class="sc-desc">Name, username, phone</span></a>
+        <a href="notifications-ios.html" class="screen-card"><span class="sc-num">35</span><span class="sc-name">Notifications</span><span class="sc-desc">Push + email toggles</span></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

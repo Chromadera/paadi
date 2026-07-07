@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "onboarding-biometrics-android.html",
+  "entry": "onboarding-biometrics-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.971Z",
+  "updatedAt": "2026-07-05T08:56:57.971Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

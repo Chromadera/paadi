@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+  <style>
+    .splash-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 0 16px;
+    }
+    .splash-brand {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+    .splash-skip {
+      font-size: 15px; font-weight: 700; color: var(--accent);
+      background: none; border: none; cursor: pointer;
+    }
+    .splash-img-wrap {
+      width: 100%; max-width: 340px; aspect-ratio: 1;
+      margin: 0 auto 32px;
+      border: 2px solid var(--fg); border-radius: 32px;
+      background: var(--surface); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 4px 4px 0 0 var(--fg);
+    }
+    .splash-img-wrap img {
+      width: 80%; height: 80%; object-fit: contain;
+    }
+    .splash-headline {
+      font-size: 24px; font-weight: 800; line-height: 1.33;
+      letter-spacing: -0.02em; text-align: center; color: var(--fg);
+      padding: 0 8px;
+    }
+    .splash-headline .highlight {
+      color: #A43073;
+    }
+    .splash-body {
+      font-size: 15px; font-weight: 500; line-height: 1.47;
+      text-align: center; color: var(--muted-60);
+      max-width: 320px; margin: 12px auto 0;
+      padding: 0 8px;
+    }
+    .splash-footer {
+      padding-bottom: 8px;
+    }
+    .splash-dots {
+      display: flex; justify-content: center; align-items: center;
+      gap: 8px; margin-bottom: 20px;
+    }
+    .splash-dot {
+      width: 8px; height: 8px; border-radius: 4px;
+      background: rgba(17,24,39,0.10);
+    }
+    .splash-dot.active {
+      width: 24px; background: var(--fg);
+    }
+  </style>
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-android">
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="pre-onboarding-splash-android" style="display:flex;flex-direction:column;justify-content:space-between;padding:0 24px 60px;">
+
+    <div data-od-id="splash-content" style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div class="splash-header" data-od-id="splash-header">
+        <span class="splash-brand" data-od-id="splash-brand">Paadi</span>
+        <a href="onboarding-start-android.html" class="splash-skip" data-od-id="splash-skip">skip</a>
+      </div>
+
+      <div class="splash-img-wrap" data-od-id="splash-img-wrap">
+        <img src="assets/onboardin.jpg" alt="Onboarding illustration showing friends coordinating payments" data-od-id="splash-img" />
+      </div>
+
+      <div data-od-id="splash-text-block">
+        <h2 class="splash-headline" data-od-id="splash-headline">
+          Splitting money shouldn't mean chasing people on <span class="highlight">WhatsApp.</span>
+        </h2>
+        <p class="splash-body" data-od-id="splash-body">
+          Collect contributions, track who's paid, and pay out all in one link.
+        </p>
+      </div>
+    </div>
+
+    <div class="splash-footer" data-od-id="splash-footer">
+      <div class="splash-dots" data-od-id="splash-dots">
+        <div class="splash-dot active" data-od-id="splash-dot-1"></div>
+        <div class="splash-dot" data-od-id="splash-dot-2"></div>
+        <div class="splash-dot" data-od-id="splash-dot-3"></div>
+      </div>
+
+      <a href="pre-onboarding-pots-android.html" class="btn-primary" data-od-id="splash-next-btn">
+        Next
+        <span class="material-symbols-outlined" style="font-size:18px;"></span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

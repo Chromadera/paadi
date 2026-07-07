@@ -29,6 +29,7 @@
     "@paadi/db": "workspace:*",
     "@paadi/domain": "workspace:*",
     "bullmq": "^5.34.0",
+    "expo-router": "^57.0.3",
     "google-auth-library": "^10.9.0",
     "ioredis": "^5.11.1",
     "libphonenumber-js": "^1.13.7",

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "onboarding-name-ios.html",
+  "entry": "onboarding-name-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-06T23:32:46.903Z",
+  "updatedAt": "2026-07-06T23:32:46.903Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

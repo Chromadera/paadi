@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Home — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-ios">
+  <!-- Dynamic Island -->
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="home-screen-ios">
+
+    <!-- Greeting Header -->
+    <div class="flex-between" style="margin-bottom:4px;" data-od-id="home-greeting">
+      <div>
+        <div class="text-xl font-black">Hi, Chidi!</div>
+        <div class="text-xs font-bold text-muted">Let's split and settle bills together</div>
+      </div>
+      <img src="assets/logos/Logomark.png" alt="Paadi" style="width:44px;height:44px;border-radius:14px;object-fit:contain;" data-od-id="home-logo" />
+    </div>
+
+    <!-- Wallet Card -->
+    <section class="card card-lg mt-4" data-od-id="balance-card">
+      <div class="flex-between">
+        <div class="flex-row gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(17,24,39,0.6)" stroke-width="2.25"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14h18v-4"/><path d="M17 14h.01"/></svg>
+          <span class="card-label" style="margin-bottom:0;">Wallet Balance</span>
+        </div>
+        <span class="badge badge-open">Active</span>
+      </div>
+      <div class="balance-amount" style="text-align:left;margin-top:4px;">₦45,200</div>
+      <div class="flex-row gap-1 mt-1 text-xs font-bold text-muted">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(17,24,39,0.4)" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M5 10v11m14-11v11"/></svg>
+        Wema Bank · 90224410
+      </div>
+    </section>
+
+    <!-- KYC Banner -->
+    <div class="kv-banner mt-4" data-od-id="kyc-banner">
+      <div class="flex-row gap-3">
+        <div class="kvc-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#92400E" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div class="text-xs font-black" style="color:#92400E;">Verify identity to unlock limits</div>
+          <div class="text-muted mt-1" style="font-size:10px;color:rgba(146,64,14,0.6);">Complete BVN and selfie check to upgrade your account and start direct payouts.</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(146,64,14,0.6)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions" data-od-id="quick-actions">
+      <button class="quick-action" data-od-id="qa-send">
+        <div class="qa-icon yellow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </div>
+        Send
+      </button>
+      <button class="quick-action" data-od-id="qa-request">
+        <div class="qa-icon outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        Request
+      </button>
+      <button class="quick-action" data-od-id="qa-bills">
+        <div class="qa-icon outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        Pay Bills
+      </button>
+      <button class="quick-action" data-od-id="qa-airtime">
+        <div class="qa-icon outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        Airtime
+      </button>
+    </div>
+
+    <!-- Active Pots -->
+    <div class="flex-between mb-4" data-od-id="active-pots-header">
+      <span class="card-label" style="margin-bottom:0;">Active Pots (2)</span>
+      <span class="text-xs font-extrabold uppercase" style="color:#F59E0B;">View All</span>
+    </div>
+
+    <div class="card flex-between" data-od-id="pot-card-dinner">
+      <div>
+        <div class="text-xs font-extrabold">Dinner at Yellow Chilli</div>
+        <div class="text-muted mt-1" style="font-size:10px;font-weight:700;">₦12,000 of ₦25,000</div>
+      </div>
+      <div class="flex-row gap-2">
+        <span style="font-size:10px;font-weight:800;color:rgba(17,24,39,0.6);">48%</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(17,24,39,0.3)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    </div>
+
+    <div class="card flex-between" data-od-id="pot-card-ikedc">
+      <div>
+        <div class="text-xs font-extrabold">IKEDC Electricity — June</div>
+        <div class="text-muted mt-1" style="font-size:10px;font-weight:700;">₦18,500 of ₦30,000</div>
+      </div>
+      <div class="flex-row gap-2">
+        <span style="font-size:10px;font-weight:800;color:rgba(17,24,39,0.6);">62%</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(17,24,39,0.3)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    </div>
+
+    <button class="btn-primary mt-4" data-od-id="create-pot-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      Create New Split Pot
+    </button>
+
+    <nav class="bottom-nav" data-od-id="bottom-nav">
+      <a href="home-android.html" class="nav-item active">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="pots-android.html" class="nav-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(17,24,39,0.35)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Pots
+      </a>
+      <div class="nav-center">
+        <div class="nav-center-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+      <a href="activity-android.html" class="nav-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(17,24,39,0.35)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Activity
+      </a>
+      <a href="profile-android.html" class="nav-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(17,24,39,0.35)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profile
+      </a>
+    </nav>
+
+    <div style="height:20px;background:var(--bg);display:flex;align-items:center;justify-content:center;"><div style="width:120px;height:4px;background:var(--fg);border-radius:2px;"></div></div>
+
+  </div>
+</div>
+
+</body>
+</html>

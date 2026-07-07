@@ -1,0 +1,43 @@
+export const theme = {
+  colors: {
+    bg: "#FFFDF5",
+    surface: "#FFFFFF",
+    primary: "#FFD200",
+    secondary: "#FF2D78",
+    success: "#10B981",
+    danger: "#EF4444",
+    ink: "#111827",
+    inkMuted: "#9CA3AF",
+    white: "#FFFFFF",
+  },
+  fontSize: {
+    tiny: 10,
+    xs: 12,
+    sm: 14,
+    base: 16,
+    xl: 20,
+    "2xl": 24,
+    huge: 28,
+  },
+  fontWeight: {
+    normal: "400" as const,
+    semibold: "600" as const,
+    bold: "700" as const,
+    extrabold: "800" as const,
+    black: "900" as const,
+  },
+  spacing: {
+    1: 4,
+    2: 8,
+    4: 16,
+    5: 20,
+    6: 24,
+    8: 32,
+  },
+  borderRadius: {
+    xl: 12,
+    "2xl": 16,
+    "3xl": 24,
+    full: 9999,
+  },
+} as const;

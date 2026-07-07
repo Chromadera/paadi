@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "pre-onboarding-splash-android.html",
+  "entry": "pre-onboarding-splash-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T15:23:05.839Z",
+  "updatedAt": "2026-07-05T15:23:05.839Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

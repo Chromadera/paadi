@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Change PIN — iOS</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+</head>
+<body>
+
+<div class="device-frame ios" data-od-id="device-frame-ios">
+  <div style="height:54px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:var(--bg);">
+    <div style="width:120px;height:32px;background:#111827;border-radius:18px;"></div>
+  </div>
+
+  <div class="device-screen" data-od-id="change-pin-screen-ios" style="padding-bottom:60px;">
+
+    <div class="ios-header" data-od-id="change-pin-header">
+      <a href="security-ios.html" style="font-size:20px;text-decoration:none;color:var(--fg);" data-od-id="back-link">←</a>
+      <h2 style="font-size:17px;font-weight:700;">Change PIN</h2>
+      <div style="width:20px;"></div>
+    </div>
+
+    <div style="padding:24px 4px 0;" data-od-id="change-pin-form">
+      <div class="card-label">Current PIN</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:12px;" data-od-id="current-pin-dots">
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-1"></div>
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-2"></div>
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-3"></div>
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-4"></div>
+      </div>
+
+      <div class="card-label mt-6">New PIN</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:12px;" data-od-id="new-pin-dots">
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-1"></div>
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-2"></div>
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-3"></div>
+        <div style="width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:var(--surface);" data-od-id="dot-4"></div>
+      </div>
+    </div>
+
+    <div style="padding:0 16px;margin-top:40px;" data-od-id="numpad">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:280px;margin:0 auto;" data-od-id="numpad-grid">
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-1">1</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-2">2</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-3">3</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-4">4</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-5">5</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-6">6</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-7">7</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-8">8</button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-9">9</button>
+        <button style="height:64px;border:2px solid transparent;border-radius:16px;background:transparent;" data-od-id="key-empty"></button>
+        <button style="height:64px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);font-size:24px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);" data-od-id="key-0">0</button>
+        <button style="height:64px;border:2px solid transparent;border-radius:16px;background:transparent;display:flex;align-items:center;justify-content:center;" data-od-id="key-delete">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="home-indicator"></div>
+
+  </div>
+</div>
+
+</body>
+</html>

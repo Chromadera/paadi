@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Payout — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+  <style>
+    /* ── payout-specific polish ─────────────────────────────────────── */
+    .payout-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0 16px;
+    }
+    .payout-header h1 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .payout-header .back-btn {
+      font-size: 20px;
+      text-decoration: none;
+      color: var(--fg);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      transition: background 0.12s ease;
+    }
+    .payout-header .back-btn:active {
+      background: var(--border);
+    }
+    .payout-header .spacer {
+      width: 28px;
+    }
+
+    .payout-summary {
+      padding: 16px 4px;
+      text-align: center;
+    }
+    .payout-summary .label {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .payout-summary .amount {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-top: 6px;
+      color: var(--fg);
+    }
+
+    .bank-select-card {
+      display: block;
+      margin-top: 8px;
+      padding: 14px 16px;
+      border: 2px solid var(--fg);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: 2px 2px 0 0 var(--fg);
+      text-decoration: none;
+      color: var(--fg);
+      transition: all 0.12s ease;
+    }
+    .bank-select-card:active {
+      transform: translateY(1px);
+      box-shadow: 1px 1px 0 0 var(--fg);
+    }
+    .bank-select-card .bank-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .bank-select-card .bank-name {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .bank-select-card .bank-hint {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .bank-select-card .chevron {
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform 0.12s ease;
+    }
+    .bank-select-card:active .chevron {
+      transform: translateX(2px);
+    }
+
+    .input-group {
+      margin-top: 20px;
+    }
+    .input-group .input-hint {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .input-group .input-error {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--danger);
+      margin-top: 6px;
+      display: none;
+    }
+    .input-group.has-error .input {
+      border-color: var(--danger);
+      background: rgba(239, 68, 68, 0.04);
+    }
+    .input-group.has-error .input-error {
+      display: block;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 0 4px 0 0 var(--fg) !important;
+    }
+    .btn-primary.is-loading {
+      position: relative;
+      color: transparent;
+    }
+    .btn-primary.is-loading::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--fg);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .payout-actions {
+      padding: 24px 4px 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-android">
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="payout-screen-android" style="padding-bottom:60px;">
+
+    <!-- Header -->
+    <div class="payout-header" data-od-id="payout-header">
+      <a href="pot-details-android.html" class="back-btn" data-od-id="back-link" aria-label="Back to pot details">←</a>
+      <h1>Payout</h1>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- Summary -->
+    <div class="payout-summary" data-od-id="payout-summary">
+      <div class="label">Available to withdraw</div>
+      <div class="amount" data-od-id="payout-amount">₦45,000</div>
+    </div>
+
+    <!-- Bank Selection -->
+    <div style="padding:0 4px;" data-od-id="bank-section">
+      <div class="card-label">Select Bank Account</div>
+      <a href="pot-bank-picker-android.html" class="bank-select-card" data-od-id="select-bank-row" role="button" aria-label="Add bank account, choose from saved accounts">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="bank-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/></svg>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div class="bank-name">Add Bank Account</div>
+            <div class="bank-hint">Choose from your saved accounts</div>
+          </div>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Form -->
+    <div style="padding:0 4px;" data-od-id="payout-form">
+      <div class="input-group" data-od-id="amount-group">
+        <label for="amount-input" class="card-label">Amount</label>
+        <input id="amount-input" class="input mt-2" type="text" inputmode="numeric" value="45,000" data-od-id="amount-input" aria-describedby="amount-hint">
+        <div id="amount-hint" class="input-hint">Minimum withdrawal: ₦1,000</div>
+        <div class="input-error" data-od-id="amount-error">Enter a valid amount</div>
+      </div>
+
+      <div class="input-group mt-4" data-od-id="narration-group">
+        <label for="narration-input" class="card-label">Narration</label>
+        <input id="narration-input" class="input mt-2" type="text" value="Dinner Split Payout" data-od-id="narration-input" maxlength="50">
+        <div class="input-hint">Max 50 characters</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="payout-actions" data-od-id="payout-actions">
+      <button class="btn-primary" data-od-id="withdraw-btn" type="button">
+        Withdraw to Bank
+      </button>
+    </div>
+
+    <!-- Empty state (hidden by default, shown when no bank linked) -->
+    <div style="display:none;padding:40px 4px;text-align:center;" data-od-id="empty-bank-state">
+      <div style="width:56px;height:56px;border-radius:var(--radius);background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/></svg>
+      </div>
+      <div style="font-size:15px;font-weight:800;margin-top:16px;">No bank account linked</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;max-width:24ch;margin-left:auto;margin-right:auto;">Add a bank account to withdraw your pot balance.</div>
+      <a href="pot-bank-picker-android.html" class="btn-primary btn-primary-sm" style="margin-top:20px;display:inline-flex;width:auto;" data-od-id="add-bank-empty-btn">Add Bank Account</a>
+    </div>
+
+  </div>
+
+  <!-- Android nav bar -->
+  <div style="height:20px;background:var(--bg);display:flex;align-items:center;justify-content:center;">
+    <div style="width:120px;height:4px;background:var(--fg);border-radius:2px;"></div>
+  </div>
+</div>
+
+</body>
+</html>

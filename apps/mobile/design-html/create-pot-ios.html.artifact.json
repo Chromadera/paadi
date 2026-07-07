@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "create-pot-ios.html",
+  "entry": "create-pot-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T02:20:51.370Z",
+  "updatedAt": "2026-07-05T02:20:51.370Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

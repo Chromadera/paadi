@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "pot-review-ios.html",
+  "entry": "pot-review-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-07T10:23:22.309Z",
+  "updatedAt": "2026-07-07T10:23:22.309Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

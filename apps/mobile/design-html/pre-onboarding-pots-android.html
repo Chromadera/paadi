@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi — Android</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+  <style>
+    .po-illustration {
+      width: 100%; height: 280px;
+      background: linear-gradient(135deg, #FFFBEB 0%, #FFF7ED 50%, #FEF3C7 100%);
+      border: 2px solid var(--fg); border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      margin: 40px 0 32px; position: relative; overflow: hidden;
+      box-shadow: 4px 4px 0 0 var(--fg);
+    }
+    .po-card {
+      background: var(--surface); border: 2px solid var(--fg);
+      border-radius: var(--radius); padding: 16px;
+      box-shadow: 3px 3px 0 0 var(--fg);
+      width: 200px;
+    }
+    .po-card-title {
+      font-size: 13px; font-weight: 800; margin-bottom: 10px;
+    }
+    .po-avatar-row {
+      display: flex; align-items: center;
+    }
+    .po-avatar-row img {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 2px solid var(--surface); margin-left: -8px;
+    }
+    .po-avatar-row img:first-child { margin-left: 0; }
+    .po-amount {
+      font-size: 22px; font-weight: 900; margin-top: 10px;
+    }
+    .po-badge {
+      position: absolute; top: 24px; right: 24px;
+      background: var(--accent); color: var(--fg);
+      font-size: 11px; font-weight: 800; padding: 6px 12px;
+      border: 2px solid var(--fg); border-radius: var(--radius-full);
+      box-shadow: 2px 2px 0 0 var(--fg);
+    }
+  </style>
+</head>
+<body>
+
+<div class="device-frame android" data-od-id="device-frame-ios">
+  <div style="height:24px;background:var(--bg);"></div>
+
+  <div class="device-screen" data-od-id="pre-onboarding-pots-ios" style="display:flex;flex-direction:column;justify-content:space-between;padding-bottom:60px;">
+
+    <div data-od-id="pots-content">
+      <div class="po-illustration" data-od-id="pots-illustration">
+        <div class="po-card" data-od-id="pots-card">
+          <div class="po-card-title" data-od-id="pots-card-title">Trip to Bali 🌴</div>
+          <div class="po-avatar-row" data-od-id="pots-avatar-row">
+            <img src="assets/avatars/avatar-2.png" alt="" />
+            <img src="assets/avatars/avatar-3.png" alt="" />
+            <img src="assets/avatars/avatar-4.png" alt="" />
+            <img src="assets/avatars/avatar-5.png" alt="" />
+          </div>
+          <div class="po-amount" data-od-id="pots-amount">₦250,000</div>
+        </div>
+        <div class="po-badge" data-od-id="pots-badge">Group Pot</div>
+      </div>
+
+      <h1 style="font-size:26px;font-weight:700;letter-spacing:-0.5px;line-height:1.2;text-align:center;" data-od-id="pots-headline">Create group pots</h1>
+      <p style="font-size:14px;font-weight:500;color:var(--muted-60);margin-top:12px;max-width:32ch;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5;" data-od-id="pots-desc">Set up shared savings for anything — rent, trips, or that group gift.</p>
+    </div>
+
+    <div data-od-id="pots-footer">
+      <div class="onboard-dots" data-od-id="pots-dots">
+        <div class="onboard-dot" data-od-id="pots-dot-1"></div>
+        <div class="onboard-dot active" data-od-id="pots-dot-2"></div>
+        <div class="onboard-dot" data-od-id="pots-dot-3"></div>
+      </div>
+
+      <a href="pre-onboarding-split-ios.html" class="btn-primary" data-od-id="pots-next-btn">
+        Next
+        <span style="font-size:18px;">→</span>
+      </a>
+    </div>
+
+
+  </div>
+</div>
+
+</body>
+</html>

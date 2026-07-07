@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "verification-error-android.html",
+  "entry": "verification-error-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.995Z",
+  "updatedAt": "2026-07-05T08:56:57.995Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}
