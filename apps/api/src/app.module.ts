@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { APP_GUARD } from "@nestjs/core";
 import { JwtGuard } from "./common/guards/jwt.guard";
+import { ScopesGuard } from "./common/guards/scopes.guard";
 import { CoreModule } from "./core/core.module";
 import { CryptoModule } from "./common/crypto/crypto.module";
 import { RedisModule } from "./infra/redis/redis.module";
@@ -69,6 +70,10 @@ import { DeveloperModule } from "./modules/developer/developer.module";
     ActivityModule,
     DeveloperModule
   ],
-  providers: [{ provide: APP_GUARD, useClass: JwtGuard }]
+  providers: [
+    // Same-module APP_GUARD order is deterministic: authenticate, then authorize.
+    { provide: APP_GUARD, useClass: JwtGuard },
+    { provide: APP_GUARD, useClass: ScopesGuard }
+  ]
 })
 export class AppModule {}
