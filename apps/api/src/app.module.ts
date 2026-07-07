@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { APP_GUARD } from "@nestjs/core";
 import { JwtGuard } from "./common/guards/jwt.guard";
+import { RateLimitGuard } from "./common/guards/rate-limit.guard";
 import { ScopesGuard } from "./common/guards/scopes.guard";
 import { CoreModule } from "./core/core.module";
 import { CryptoModule } from "./common/crypto/crypto.module";
@@ -73,8 +74,10 @@ import { DeveloperModule } from "./modules/developer/developer.module";
     DeveloperModule
   ],
   providers: [
-    // Same-module APP_GUARD order is deterministic: authenticate, then authorize.
+    // Same-module APP_GUARD order is deterministic:
+    // authenticate → rate-limit (keyed on principal) → authorize scopes.
     { provide: APP_GUARD, useClass: JwtGuard },
+    { provide: APP_GUARD, useClass: RateLimitGuard },
     { provide: APP_GUARD, useClass: ScopesGuard }
   ]
 })
