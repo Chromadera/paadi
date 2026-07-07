@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "activity-empty-ios.html",
+  "entry": "activity-empty-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:55:45.939Z",
+  "updatedAt": "2026-07-05T08:55:45.939Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paadi Verification Error — iOS</title>
+  <link rel="stylesheet" href="css/paadi-mobile.css" />
+</head>
+<body>
+
+<div class="device-frame ios" data-od-id="device-frame-ios">
+  <div style="height:54px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:var(--bg);">
+    <div style="width:120px;height:32px;background:#111827;border-radius:18px;"></div>
+  </div>
+
+  <div class="device-screen" data-od-id="verification-error-screen-ios" style="padding-bottom:60px;">
+
+    <div style="padding:32px 4px 16px;text-align:center;" data-od-id="error-content">
+      <div style="width:64px;height:64px;border-radius:50%;background:#FEE2E2;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;">⚠️</div>
+      <h1 style="font-size:22px;font-weight:900;letter-spacing:-0.3px;">Verification Failed</h1>
+      <p style="font-size:14px;color:var(--muted-60);margin-top:8px;max-width:280px;margin-left:auto;margin-right:auto;line-height:1.5;">We couldn't verify your identity with the provided information. Please check your details and try again.</p>
+    </div>
+
+    <div style="padding:0 4px;margin-top:24px;" data-od-id="error-actions">
+      <div style="border:2px solid var(--border);border-radius:16px;background:var(--surface);padding:16px;margin-bottom:16px;" data-od-id="error-details">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:4px;">Error code</div>
+        <div style="font-size:15px;font-weight:700;font-family:var(--font-mono);">VER_001_BVN_MISMATCH</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:12px;margin-bottom:4px;">Reason</div>
+        <div style="font-size:14px;">BVN does not match phone number records</div>
+      </div>
+
+      <button class="btn-primary" data-od-id="retry-btn">Try Again</button>
+      <button style="width:100%;padding:14px;border:2px solid var(--fg);border-radius:14px;background:var(--surface);font-size:15px;font-weight:700;box-shadow:2px 2px 0 0 var(--fg);margin-top:12px;" data-od-id="contact-support-btn">Contact Support</button>
+    </div>
+
+    <div class="home-indicator"></div>
+
+  </div>
+</div>
+
+</body>
+</html>

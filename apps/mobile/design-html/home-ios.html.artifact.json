@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "home-ios.html",
+  "entry": "home-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T01:27:41.720Z",
+  "updatedAt": "2026-07-05T01:27:41.720Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

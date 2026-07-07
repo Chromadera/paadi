@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "confirm-new-pin-ios.html",
+  "entry": "confirm-new-pin-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:50:49.497Z",
+  "updatedAt": "2026-07-05T08:50:49.497Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

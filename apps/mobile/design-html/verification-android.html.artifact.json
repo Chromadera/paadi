@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "verification-android.html",
+  "entry": "verification-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.994Z",
+  "updatedAt": "2026-07-05T08:56:57.994Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

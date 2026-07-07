@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "confirm-new-pin-android.html",
+  "entry": "confirm-new-pin-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.966Z",
+  "updatedAt": "2026-07-05T08:56:57.966Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "edit-profile-ios.html",
+  "entry": "edit-profile-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:53:45.671Z",
+  "updatedAt": "2026-07-05T08:53:45.671Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "pot-bank-picker-android.html",
+  "entry": "pot-bank-picker-android.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T08:56:57.981Z",
+  "updatedAt": "2026-07-05T08:56:57.981Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

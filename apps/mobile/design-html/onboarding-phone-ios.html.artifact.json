@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "onboarding-phone-ios.html",
+  "entry": "onboarding-phone-ios.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-07-05T02:21:46.886Z",
+  "updatedAt": "2026-07-05T02:21:46.886Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}
